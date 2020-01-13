@@ -19,4 +19,7 @@ jobs:
         echo test, and deploy your project.
     - name: Show log
       run: git log
+    - name: tagging
+      run: git tag "actions/${GITHUB_WORKFLOW}/${GITHUB_ACTION}"
+
 
