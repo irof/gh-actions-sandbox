@@ -12,8 +12,6 @@ jobs:
       uses: actions/hello-world-docker-action@v1
       with:
         who-to-greet: 'public'
-    - name: Checkout
-      uses: actions/checkout@v1
     - name: このリポジトリのActionを使う
       id: private-hello
       uses: ./hello-world-docker-action
