@@ -1,8 +1,9 @@
 name: TENARAI
 
-on:
-  schedule:
-    - cron: '*/6 * * * 1'
+on: push
+#on:
+#  schedule:
+#    - cron: '*/6 * * * 1'
 
 jobs:
   build:
