@@ -1,6 +1,9 @@
 name: Docker actionを使ってみる
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   public-hello-job:
