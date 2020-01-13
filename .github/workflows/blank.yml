@@ -19,7 +19,7 @@ jobs:
         echo test, and deploy your project.
     - name: Show log
       run: git log
-    - name: tagging
+    - name: tagを作ってpush
       run: |
         TAGNAME=actions/${GITHUB_WORKFLOW}/`date "+%Y%m%dT%H%M%S"`
         echo git tag "${TAGNAME}"
