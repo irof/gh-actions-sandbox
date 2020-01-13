@@ -12,6 +12,8 @@ jobs:
       uses: actions/hello-world-docker-action@v1
       with:
         who-to-greet: 'public'
+    - name: Get the output time
+      run: echo "The time was ${{ steps.public-hello.outputs.time }}"
   private-hello-job:
     runs-on: ubuntu-latest
     name: このリポジトリのActionを使う
@@ -23,12 +25,11 @@ jobs:
       uses: ./hello-world-docker-action
       with:
         who-to-greet: 'private'
+    - name: Get the output time
+      run: echo "The time was ${{ steps.private-hello.outputs.time }}"
   echo-job:
     runs-on: ubuntu-latest
     name: 結果を出力する
     needs: [public-hello-job, private-hello-job]
     steps:
-    - name: Get the output time
-      run: echo "The time was ${{ jobs.public-hello-job.steps.public-hello.outputs.time }}"
-    - name: Get the output time
-      run: echo "The time was ${{ jobs.private-hello-job.steps.private-hello.outputs.time }}"
+      - run: echo finish
