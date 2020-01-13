@@ -21,9 +21,7 @@ jobs:
       run: git log
     - name: tagging
       run: |
-        echo git tag "actions/${GITHUB_WORKFLOW}/${GITHUB_ACTION}"
-        git tag "actions/${GITHUB_WORKFLOW}/${GITHUB_ACTION}"
-    - name: remote
-      run: git remote -v
-    - name: remote
-      run: git push origin "actions/${GITHUB_WORKFLOW}/${GITHUB_ACTION}"
+        TAGNAME=actions/${GITHUB_WORKFLOW}/`date "+%Y%m%dT%H%M%S"`
+        echo git tag "${TAGNAME}"
+        git tag "${TAGNAME}"
+        git push origin "${TAGNAME}"
