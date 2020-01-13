@@ -1,4 +1,4 @@
-name: TENARAI
+name: Docker actionを使ってみる
 
 on: [push]
 
