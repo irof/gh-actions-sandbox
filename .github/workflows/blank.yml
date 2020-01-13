@@ -25,4 +25,4 @@ jobs:
         echo git tag "${TAGNAME}"
         git tag "${TAGNAME}"
         git remote add pushrepository https://irof:${{ secrets.GITHUB_TOKEN }}@github.com/irof/github_actions.git
-        git push pushrepository"${TAGNAME}"
+        git push pushrepository "${TAGNAME}"
