@@ -8,6 +8,8 @@ inputs:
 outputs:
   time: # id of output
     description: 'The time we greeted you'
+  hoge:
+    description: ふが
 runs:
   using: 'docker'
   image: 'Dockerfile'

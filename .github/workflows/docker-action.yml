@@ -17,6 +17,8 @@ jobs:
         who-to-greet: 'public'
     - name: 実行時間の出力
       run: echo "The time was ${{ steps.public-hello.outputs.time }}" > time.txt
+    - name: hogeの出力
+      run: echo ${{ steps.public-hello.outputs.hoge }}"
     - name: 実行時間のアップロード
       uses: actions/upload-artifact@v1
       with:
