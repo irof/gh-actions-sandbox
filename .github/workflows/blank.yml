@@ -20,6 +20,9 @@ jobs:
     - name: Show log
       run: git log
     - name: tagging
-      run: git tag "actions/${GITHUB_WORKFLOW}/${GITHUB_ACTION}"
-
+      run: |
+        echo git tag "actions/${GITHUB_WORKFLOW}/${GITHUB_ACTION}"
+        git tag "actions/${GITHUB_WORKFLOW}/${GITHUB_ACTION}"
+    - name: remote
+      run: git remote -v
 
