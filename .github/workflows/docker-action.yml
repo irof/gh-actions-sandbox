@@ -1,4 +1,4 @@
-name: Docker actionを使ってみる
+name: Dockerで何かするよ
 
 on:
   push:
