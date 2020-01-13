@@ -14,10 +14,12 @@ jobs:
     - uses: actions/checkout@v1
     - name: Show log
       run: git log
-    - name: tagを作ってpush
+    - name: create tag name
       run: |
         TAGNAME=actions/${GITHUB_WORKFLOW}/`date "+%Y%m%dT%H%M%S"`
         echo git tag "${TAGNAME}"
+    - name: tagを作ってpush
+      run: |
         git tag "${TAGNAME}"
         PUSHURL="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
         git push ${PUSHURL} ${TAGNAME}
