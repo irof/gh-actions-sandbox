@@ -6,10 +6,19 @@ jobs:
     name: A job to say hello
     steps:
     - name: Hello world action step
-      id: hello
+      id: public-hello
       uses: actions/hello-world-docker-action@v1
       with:
-        who-to-greet: 'Mona the Octocat'
+        who-to-greet: 'public'
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Hello world action step
+      id: private-hello
+      uses: ./hello-world-docker-action
+      with:
+        who-to-greet: 'private'
     # Use the output from the `hello` step
     - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
+      run: echo "The time was ${{ steps.public-hello.outputs.time }}"
+    - name: Get the output time
+      run: echo "The time was ${{ steps.private-hello.outputs.time }}"
