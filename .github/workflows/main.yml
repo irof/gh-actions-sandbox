@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: 公開されているActionを使う
     steps:
-    - name: 公開されてるのを実行（Dockerfileのビルドなし）
+    - name: 公開されてるのを実行
       id: public-hello
       uses: actions/hello-world-docker-action@v1
       with:
