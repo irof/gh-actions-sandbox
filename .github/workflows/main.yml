@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: 公開されているActionを使う
     steps:
-    - name: 
+    - name: 公開されてるのを実行（Dockerfileのビルドなし）
       id: public-hello
       uses: actions/hello-world-docker-action@v1
       with:
@@ -16,9 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     name: このリポジトリのActionを使う
     steps:
-    - name: Checkout
+    - name: このリポジトリのコードを取得
       uses: actions/checkout@v1
-    - name: 
+    - name: Dockerfileをビルドして実行
       id: private-hello
       uses: ./hello-world-docker-action
       with:
