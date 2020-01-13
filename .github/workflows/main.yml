@@ -29,6 +29,6 @@ jobs:
     needs: [public-hello-job, private-hello-job]
     steps:
     - name: Get the output time
-      run: echo "The time was ${{ public-hello-job.steps.public-hello.outputs.time }}"
+      run: echo "The time was ${{ jobs.public-hello-job.steps.public-hello.outputs.time }}"
     - name: Get the output time
-      run: echo "The time was ${{ private-hello-job.steps.private-hello.outputs.time }}"
+      run: echo "The time was ${{ jobs.private-hello-job.steps.private-hello.outputs.time }}"
