@@ -30,7 +30,7 @@ jobs:
       uses: actions/checkout@v1
     - name: Dockerfileをビルドして実行
       id: private-hello
-      uses: .github/actions/hello-world-docker-action
+      uses: ./.github/actions/hello-world-docker-action
       with:
         who-to-greet: 'private'
     - name: 実行時間の出力
