@@ -1,3 +1,5 @@
+name: TENARAI
+
 on: [push]
 
 jobs:
@@ -5,19 +7,18 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-    - name: Hello world action step
+    - name: パブリックなActionを使う
       id: public-hello
       uses: actions/hello-world-docker-action@v1
       with:
         who-to-greet: 'public'
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Hello world action step
+    - name: このリポジトリのActionを使う
       id: private-hello
       uses: ./hello-world-docker-action
       with:
         who-to-greet: 'private'
-    # Use the output from the `hello` step
     - name: Get the output time
       run: echo "The time was ${{ steps.public-hello.outputs.time }}"
     - name: Get the output time
