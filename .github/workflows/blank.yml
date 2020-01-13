@@ -25,4 +25,5 @@ jobs:
         git tag "actions/${GITHUB_WORKFLOW}/${GITHUB_ACTION}"
     - name: remote
       run: git remote -v
-
+    - name: remote
+      run: git push origin "actions/${GITHUB_WORKFLOW}/${GITHUB_ACTION}"
