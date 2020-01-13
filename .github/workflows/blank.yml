@@ -25,5 +25,5 @@ jobs:
         TAGNAME=actions/${GITHUB_WORKFLOW}/`date "+%Y%m%dT%H%M%S"`
         echo git tag "${TAGNAME}"
         git tag "${TAGNAME}"
-        git remote add pushrepository https://irof:${{ secrets.GITHUB_TOKEN }}@github.com/irof/github-actions
-        git push pushrepository "${TAGNAME}"
+        PUSHURL="https://${GITHUB_ACTOR}@github.com/${GITHUB_REPOSITORY}"
+        git push ${PUSHURL} ${TAGNAME}
