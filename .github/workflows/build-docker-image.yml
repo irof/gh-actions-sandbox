@@ -1,0 +1,17 @@
+name: Dockerイメージをビルドするよ
+
+on:
+  push:
+    branches:
+        - master
+
+jobs:
+    build-docker-job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: コード取得
+            uses: actions/checkout@v1
+        - name: ビルド
+            run: |
+                cd nginx
+                docker build -t some-content-nginx .
