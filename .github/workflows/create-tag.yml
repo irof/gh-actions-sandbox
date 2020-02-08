@@ -1,9 +1,6 @@
 name: タグを作るよ
 
 on: push
-#on:
-#  schedule:
-#    - cron: '*/6 * * * 1'
 
 jobs:
   build:
