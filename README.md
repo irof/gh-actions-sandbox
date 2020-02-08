@@ -19,3 +19,12 @@ see [GitHub Actions のコンテキストおよび式の構文](https://help.git
 環境変数的なのでやりたいのだけど、jobは独立したコンテナなのでartifactを介するしかない？
 
 see [ワークフローのジョブ間でデータを受け渡す](https://help.github.com/ja/actions/automating-your-workflow-with-github-actions/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow)
+
+## step間の参照
+
+> 各ステップは、ランナー環境のそれ自体のプロセスで実行され、ワークスペースとファイルシステムにアクセスします。 ステップはそれ自体のプロセスで実行されるため、環境変数を変更しても、ステップ間では反映されません。
+
+see [GitHub Actionsのワークフロー構文](https://help.github.com/ja/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)の `jobs.<job_id>.steps`
+
+環境変数は使えない。
+
