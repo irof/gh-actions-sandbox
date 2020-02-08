@@ -8,17 +8,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Show log
-      run: git log
-    - id: generate-tag-name
-      run: |
-        TAGNAME=actions/${GITHUB_WORKFLOW}/`date "+%Y%m%dT%H%M%S"`
-        echo "::set-env name=TAGNAME::${TAGNAME}"
-    - name: tagを作ってpush
-      run: |
-        echo git tag "${TAGNAME}"
-        git tag "${TAGNAME}"
-        PUSHURL="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
-        git push ${PUSHURL} ${TAGNAME}
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Show log
+        run: git log
+      - id: generate-tag-name
+        run: |
+          TAGNAME=actions/${GITHUB_WORKFLOW}/`date "+%Y%m%dT%H%M%S"`
+          echo "::set-env name=TAGNAME::${TAGNAME}"
+      - name: create tag and push
+        run: |
+          echo git tag "${TAGNAME}"
+          git tag "${TAGNAME}"
+          PUSHURL="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
+          git push ${PUSHURL} ${TAGNAME}
 
