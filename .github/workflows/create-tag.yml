@@ -13,15 +13,12 @@ jobs:
       run: git log
     - id: generate-tag-name
       run: |
-        echo "::set-env name=env_hoge::fuga"
-        echo "::set-output name=out_foo::bar"
-
+        TAGNAME=actions/${GITHUB_WORKFLOW}/`date "+%Y%m%dT%H%M%S"`
+        echo "::set-env name=TAGNAME::${TAGNAME}"
     - name: tagを作ってpush
       run: |
-        echo "${env_hoge}"
-        echo "${{ steps.generate-tag-name.outputs.out_foo }}"
-        TAGNAME=actions/${GITHUB_WORKFLOW}/`date "+%Y%m%dT%H%M%S"`
         echo git tag "${TAGNAME}"
         git tag "${TAGNAME}"
         PUSHURL="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
-        #git push ${PUSHURL} ${TAGNAME}
+        git push ${PUSHURL} ${TAGNAME}
+
