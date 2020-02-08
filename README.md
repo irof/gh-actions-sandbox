@@ -26,5 +26,24 @@ see [ワークフローのジョブ間でデータを受け渡す](https://help.
 
 see [GitHub Actionsのワークフロー構文](https://help.github.com/ja/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions)の `jobs.<job_id>.steps`
 
-環境変数は使えない。
+環境変数は直接は使えない。
+
+ワークスペースとファイルシステムを共有しているのでファイル経由でもいいかもだけれどそれも大袈裟なので、[GitHub Actionsの開発ツール](https://help.github.com/ja/actions/automating-your-workflow-with-github-actions/development-tools-for-github-actions)を使う。
+
+`set-env` で環境変数。 `set-output` で出力パラメータに設定。
+
+```
+echo "::set-env name=ENV_HOGE::hoge"
+echo "::set-output name=OUTPUT_FUGA::fuga"
+```
+
+他のstepからの読み方は次の通り。
+
+```
+echo "${ENV_HOGE}"
+echo "${{ steps.<outputしたstepのid>.outputs.OUTPUT_FUGA }}"
+```
+
+stepのidはコンテキスト参照をしなければ使用する必要はないので、小さいものなら環境変数が手軽に思える。
+
 
