@@ -7,6 +7,7 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
+      - actions/checkout@v2
       - name: Print a greeting
         run: |
           echo hello world.
@@ -14,4 +15,8 @@ jobs:
         run: curl --help
       - name: jq
         run: jq --help
+      - name: latest tag
+        run: |
+          curl -s https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/latest | jq -r ".tag_name"
+
 
