@@ -48,4 +48,11 @@ echo "${{ steps.<outputしたstepのid>.outputs.OUTPUT_FUGA }}"
 
 stepのidはコンテキスト参照をしなければ使用する必要はないので、小さいものなら環境変数が手軽に思える。
 
+## リリースの作成
 
+`actions/create-release` を試してみたものの……
+
+`with` で環境変数が渡せない。`steps`などのコンテキストからならいける。
+`::set-output` などが `echo` 経由で実現しているので改行入りが受け渡ししづらい。
+
+てことでAPI直接使う。　
