@@ -14,6 +14,7 @@ jobs:
         run: |
           echo hello world.
   jikken:
+    name: じっけん
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -27,7 +28,7 @@ jobs:
         run: |
           echo ${latest_tag}
           subject=$(git log --format="%s" ${latest_tag}..HEAD -- .)
-          echo "::set-env name=subject::${release_body}"
+          echo "::set-env name=subject::${subject}"
       - name: echo
         run: echo ${subject}
 
