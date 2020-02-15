@@ -3,7 +3,7 @@ name: Dockerイメージをビルドするよ
 on:
   push:
     branches:
-        - master
+        - build-docker
 
 jobs:
     build-docker-job:
