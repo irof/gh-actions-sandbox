@@ -10,4 +10,8 @@ jobs:
       - name: Print a greeting
         run: |
           echo hello world.
+      - name: curl
+        run: curl -v
+      - name: jq
+        run: jq -v
 
