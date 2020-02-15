@@ -11,7 +11,7 @@ jobs:
         run: |
           echo hello world.
       - name: curl
-        run: curl -v
+        run: curl --help
       - name: jq
-        run: jq -v
+        run: jq --help
 
