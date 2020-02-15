@@ -6,12 +6,16 @@ on:
       - master
 
 jobs:
-  hello:
+  sample:
+    name: さんぷる
     runs-on: ubuntu-latest
     steps:
-      - name: コマンド実行のサンプル
+      - name: コマンド実行
         run: |
           echo hello world.
+  jikken:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
       - name: GitHub APIでlatestリリースのtag取得
         run: |
@@ -21,6 +25,8 @@ jobs:
       - name: Git履歴取得
         run: git fetch --prune --unshallow
       - name: latestリリース以降のlog表示
-        run: git log ${latest_tag}..
+        run: |
+          echo ${latest_tag}
+          git log ${latest_tag}..
 
 
