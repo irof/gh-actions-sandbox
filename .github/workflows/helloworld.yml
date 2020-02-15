@@ -1,7 +1,9 @@
 name: じっけんじょう
 
 on:
-  push
+  push:
+    branches:
+      - master
 
 jobs:
   hello:
