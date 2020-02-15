@@ -1,6 +1,9 @@
 name: タグを作るよ
 
-on: push
+on:
+  push:
+    branches:
+      - tagging
 
 jobs:
   build:
