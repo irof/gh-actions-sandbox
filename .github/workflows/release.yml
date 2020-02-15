@@ -3,7 +3,7 @@ on:
     tags:
       - 'actions/v*'
 
-name: Create Release
+name: タグ作ったら動くやつ
 
 jobs:
   draft:
