@@ -9,15 +9,18 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-      - name: コマンド実行
+      - name: コマンド実行のサンプル
         run: |
           echo hello world.
-      - name: コードを取ってくる
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - name: GitHub APIでlatestリリースのtag取得
         run: |
           latest_tag=$(curl -s https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/latest | jq -r ".tag_name")
           echo ${latest_tag}
-          git log ${latest_tag}..
+          echo "::set-env name=latest_tag::${latest_tag}"
+      - name: Git履歴取得
+        run: git fetch --prune --unshallow
+      - name: latestリリース以降のlog表示
+        run: git log ${latest_tag}..
 
 
