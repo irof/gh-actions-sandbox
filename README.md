@@ -1,5 +1,7 @@
 # github-actions
 
+![こんにちは](https://github.com/irof/github-actions/workflows/%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF/badge.svg)
+
 READMEで見たところメモ
 
 https://help.github.com/ja/actions
