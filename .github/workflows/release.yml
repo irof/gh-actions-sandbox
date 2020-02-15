@@ -37,10 +37,11 @@ jobs:
           echo ${latest_tag}
           echo "::set-env name=latest_tag::${latest_tag}"
       - name: create release body
+        id: get_body
         run: |
           echo ${latest_tag}
-          release_body=$(git log --format="%s" ${latest_tag}..HEAD -- .)
-          echo "::set-env name=release_body::${release_body}"
+          body=$(git log --format="%s" ${latest_tag}..HEAD -- .)
+          echo "::set-output name=body::${body}"
       - name: Create Draft Release
         id: create_release
         uses: actions/create-release@v1
@@ -49,6 +50,7 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Draft ${{ github.ref }}
-          body: ${release_body}
+          body: ${{ steps.get_body.outputs.body }}
           draft: true
           prerelease: false
+
