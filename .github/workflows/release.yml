@@ -6,7 +6,7 @@ on:
 name: Create Release
 
 jobs:
-  build:
+  release:
     name: Create Release
     runs-on: ubuntu-latest
     steps:
@@ -26,3 +26,29 @@ jobs:
             - Second Change
           draft: false
           prerelease: false
+  release-draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow
+      - name: get latest release tagname
+        run: |
+          latest_tag=$(curl -s https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/latest | jq -r ".tag_name")
+          echo ${latest_tag}
+          echo "::set-env name=latest_tag::${latest_tag}"
+      - name: create release body
+        run: |
+          echo ${latest_tag}
+          release_body=$(git log --format="%s" ${latest_tag}..HEAD -- .)
+          echo "::set-env name=release_body::${release_body}"
+      - name: Create Draft Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: [Draft] ${{ github.ref }}
+          body: ${release_body}
+          draft: true
+          prerelease: false
+

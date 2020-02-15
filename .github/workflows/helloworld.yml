@@ -26,16 +26,8 @@ jobs:
       - name: create release body
         run: |
           echo ${latest_tag}
-          release_body=$(git log --format="%s" ${latest_tag}..HEAD -- .)
-          echo "::set-env name=release_body::${release_body}"
-      - name: Create Draft Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: [Draft] ${{ github.ref }}
-          body: ${release_body}
-          draft: true
-          prerelease: false
+          subject=$(git log --format="%s" ${latest_tag}..HEAD -- .)
+          echo "::set-env name=subject::${release_body}"
+      - name: echo
+        run: echo ${subject}
 
