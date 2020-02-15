@@ -1,4 +1,4 @@
-name: こんにちは
+name: じっけんじょう
 
 on:
   push
@@ -7,15 +7,12 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-      - actions/checkout@v2
-      - name: Print a greeting
+      - name: コマンド実行
         run: |
           echo hello world.
-      - name: curl
-        run: curl --help
-      - name: jq
-        run: jq --help
-      - name: latest tag
+      - name: コードを取ってくる
+        uses: actions/checkout@v2
+      - name: GitHub APIでlatestリリースのtag取得
         run: |
           curl -s https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/latest | jq -r ".tag_name"
 
