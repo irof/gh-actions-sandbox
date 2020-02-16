@@ -2,15 +2,29 @@ name: リリースで動くもの
 
 # https://help.github.com/en/actions/reference/events-that-trigger-workflows#release-event-release
 #
-# typeを選ばないと全てで動く。
 # draftでは動かない。
+#
+# typeを指定しないと全てで動く
+# 指定せずにリリースを作ったら3つ動いた。createdとpublishedとedited？
+# 
+# types:
+#  - published
+#  - unpublished
+#  - created
+#  - edited
+#  - deleted
+#  - prereleased
 # 
 # 環境変数に以下が設定される。
 # - GITHUB_SHA: リリースタグのSHA
 # - GITHUB_REF: タグ名
 
 on:
-  release
+  release:
+    types:
+      - published
+      - created
+      - edited
 
 jobs:
   build:
