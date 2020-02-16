@@ -10,14 +10,7 @@ name: リリースで動くもの
 # - GITHUB_REF: タグ名
 
 on:
-  release:
-    types:
-      - published
-      - unpublished
-      - created
-      - edited
-      - deleted
-      - prereleased
+  release
 
 jobs:
   build:
