@@ -1,9 +1,9 @@
+name: タグ作ったらリリース作るやつ
+
 on:
   push:
     tags:
       - 'actions/v*'
-
-name: タグ作ったら動くやつ
 
 jobs:
   draft:
@@ -32,6 +32,6 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: Draft ${{ github.ref }}
           body: ${{ steps.get_body.outputs.body }}
-          draft: true
+          draft: false
           prerelease: false
 
