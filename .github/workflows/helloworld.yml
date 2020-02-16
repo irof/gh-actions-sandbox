@@ -1,4 +1,4 @@
-name: じっけんじょう
+name: HelloWorld
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - master
 
 jobs:
-  sample:
-    name: さんぷる
+  hello-world:
+    name: HelloWorld
     runs-on: ubuntu-latest
     steps:
       - name: コマンド実行
