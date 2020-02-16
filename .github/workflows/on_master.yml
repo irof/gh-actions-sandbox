@@ -18,17 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: git fetch --prune --unshallow
-      - name: get latest release tagname
-        run: |
-          latest_tag=$(curl -s https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/latest | jq -r ".tag_name")
-          echo ${latest_tag}
-          echo "::set-env name=latest_tag::${latest_tag}"
-      - name: create release body
-        run: |
-          echo ${latest_tag}
-          subject=$(git log --format="%s" ${latest_tag}..HEAD -- . | awk '{printf $0","}')
-          echo "::set-env name=subject::${subject}"
-      - name: echo
-        run: echo ${subject}
-
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2.0.0
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
