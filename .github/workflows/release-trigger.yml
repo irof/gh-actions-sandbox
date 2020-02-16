@@ -23,6 +23,9 @@ on:
     types:
       - published
       - edited
+      - prereleased
+      - unpublished
+      - deleted
 
 jobs:
   build:
