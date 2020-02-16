@@ -1,0 +1,27 @@
+name: リリースで動くもの
+
+# https://help.github.com/en/actions/reference/events-that-trigger-workflows#release-event-release
+#
+# typeを選ばないと全てで動く。
+# draftでは動かない。
+# 
+# 環境変数に以下が設定される。
+# - GITHUB_SHA: リリースタグのSHA
+# - GITHUB_REF: タグ名
+
+on:
+  release:
+    types:
+      - published
+      - unpublished
+      - created
+      - edited
+      - deleted
+      - prereleased
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${GITHUB_SHA}
+      - run: echo ${GITHUB_REF}
