@@ -21,4 +21,5 @@ jobs:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2.0.0
         env:
+          SLACK_USERNAME: じっけん@GitHubActions
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
