@@ -17,9 +17,9 @@ jobs:
     name: じっけん
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2.0.0
-        env:
-          SLACK_USERNAME: じっけん@GitHubActions
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data '{"text":"Hello, World!"}' \
+            ${{ secrets.SLACK_WEBHOOK_URL }}
+
