@@ -1,4 +1,4 @@
-name: HelloWorld
+name: masterの更新で動く
 
 on:
   push:

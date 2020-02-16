@@ -1,4 +1,4 @@
-name: タグ作ったらリリース作るやつ
+name: タグ作ったら動く
 
 on:
   push:
@@ -6,24 +6,27 @@ on:
       - 'actions/v*'
 
 jobs:
-  draft:
+  release:
+    name: リリース作成
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: git fetch --prune --unshallow
-      - name: get latest release tagname
+      - name: リポジトリを取得
+        uses: actions/checkout@v2
+      - name: リポジトリのログ取得のためのunshallow
+        run: git fetch --prune --unshallow
+      - name: GitHubからlatestなリリースタグを取得
         run: |
           latest_tag=$(curl -s https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/latest | jq -r ".tag_name")
           echo ${latest_tag}
           echo "::set-env name=latest_tag::${latest_tag}"
-      - name: create release body
+      - name: リリースの内容をgitのログから作成
         id: get_body
         run: |
-          echo ${latest_tag}
+          echo "${latest_tag} 以降のログを取得します"
           body=$(git log --format="%s" ${latest_tag}..HEAD -- . | awk '{printf $0","}')
           echo ${body}
           echo "::set-output name=body::${body}"
-      - name: Create Draft Release
+      - name: リリース作成
         id: create_release
         uses: actions/create-release@v1
         env:

@@ -1,9 +1,10 @@
-name: Greetings
+name: pull requestとissueで動く
 
 on: [pull_request, issues]
 
 jobs:
   greeting:
+    name: 挨拶を返す（サンプルそのまま）
     runs-on: ubuntu-latest
     steps:
     - uses: actions/first-interaction@v1
