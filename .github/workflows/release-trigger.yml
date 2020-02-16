@@ -21,11 +21,12 @@ name: リリースで動くもの
 on:
   release:
     types:
-      - published
-      - edited
       - prereleased
-      - unpublished
       - deleted
+      - edited
+      - unpublished
+      - published
+      - created
 
 jobs:
   build:
