@@ -7,6 +7,8 @@ name: リリースで動くもの
 # typeを指定しないと全てで動くらしい。
 # 何も指定しないと3回動くが、ドキュメントにある全てを列挙しても2回しか動かない不思議。
 # あとリリース削除してもdeleted動かない。
+# ついでに一回公開したリリースってDraftに戻せないからunpublishedって何なの。
+# とはいえ実際使うのは [published] くらいだろう。
 # 
 # types:
 #  - published
@@ -18,17 +20,11 @@ name: リリースで動くもの
 # 
 # 環境変数に以下が設定される。
 # - GITHUB_SHA: リリースタグのSHA
-# - GITHUB_REF: タグ名
+# - GITHUB_REF: タグ名 (refs/tags/{タグ名}) ……タグ名だけがよかったなぁ。
 
 on:
   release:
-    types:
-      - prereleased
-      - deleted
-      - edited
-      - unpublished
-      - published
-      - created
+    types: [published]
 
 jobs:
   build:
