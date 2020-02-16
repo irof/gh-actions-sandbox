@@ -20,7 +20,7 @@ jobs:
         id: get_body
         run: |
           echo ${latest_tag}
-          body=$(git log --format="%s" ${latest_tag}..HEAD -- . | xargs -I {} echo "- {}")
+          body=$(git log --format="%s" ${latest_tag}..HEAD -- . | awk '{printf $0","}')
           echo ${body}
           echo "::set-output name=body::${body}"
       - name: Create Draft Release

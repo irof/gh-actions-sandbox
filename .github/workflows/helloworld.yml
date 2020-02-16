@@ -27,7 +27,7 @@ jobs:
       - name: create release body
         run: |
           echo ${latest_tag}
-          subject=$(git log --format="%s" ${latest_tag}..HEAD -- .)
+          subject=$(git log --format="%s" ${latest_tag}..HEAD -- . | awk '{printf $0","}')
           echo "::set-env name=subject::${subject}"
       - name: echo
         run: echo ${subject}
