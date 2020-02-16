@@ -21,6 +21,10 @@ name: リリースで動くもの
 # 環境変数に以下が設定される。
 # - GITHUB_SHA: リリースタグのSHA
 # - GITHUB_REF: タグ名 (refs/tags/{タグ名}) ……タグ名だけがよかったなぁ。
+#
+# GitHub Actionsで作ったリリース( `on_release.yml` 参照) からはトリガーされない。
+# https://help.github.com/en/actions/reference/events-that-trigger-workflows#about-workflow-events
+# > An action in a workflow run can't trigger a new workflow run.
 
 on:
   release:
