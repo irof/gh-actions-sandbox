@@ -39744,9 +39744,12 @@ try {
     console.log(`Hello ${_actions_github__WEBPACK_IMPORTED_MODULE_2__.context.ref}!`);
     console.log(`Hello ${_actions_github__WEBPACK_IMPORTED_MODULE_2__.context.payload.repository.html_url}!`);
 
-    // https://github.community/t/how-to-get-just-the-tag-name/16241/20
-    // github.event.release.tag_name が使えそうだけどどこにあるんだろう
-    const message = JSON.stringify(github)
+    // https://github.community/t/how-to-get-just-the-tag-name/16241/21
+    // github.event.release.tag_name が使えそう
+    // JavaScriptから素直にアクセスはできなさそうなので外から渡す
+    // https://docs.github.com/en/developers/webhooks-and-events/webhook-events-and-payloads#release
+    console.log(JSON.stringify(github))
+    const message = Object(_actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput)("url")
     console.log(message)
 
     // tweet
