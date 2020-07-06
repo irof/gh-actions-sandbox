@@ -19,7 +19,4 @@ jobs:
           consumer_secret: ${{ secrets.TWITTER_CONSUMER_SECRET }}
           access_token_key: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }}
           access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
-          // github.eventに全部入ってるっぽい
           url: ${{ github.event.compare }}
-          // github.event.release.url
-          // github.event.release.tag_name
