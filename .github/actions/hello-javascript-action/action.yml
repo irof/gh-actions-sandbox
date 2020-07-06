@@ -1,4 +1,20 @@
 name: 'HelloJavaScriptAction'
+inputs:
+  consumer_key:
+    description: 'twitter consumer key'
+    required: true
+  consumer_secret:
+    description: 'tiwtter consumer secret'
+    required: true
+  access_token_key:
+    description: 'twitter access token key'
+    required: true
+  access_token_secret:
+    description: 'twitter access token secret'
+    required: true
+  url:
+    description: 'url'
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
