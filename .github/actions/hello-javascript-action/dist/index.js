@@ -39739,9 +39739,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// ncc build index.js で作らなかったら node_modules を全部コミットしなきゃいけない
 try {
     console.log(`Hello ${_actions_github__WEBPACK_IMPORTED_MODULE_2__.context.ref}!`);
     console.log(`Hello ${_actions_github__WEBPACK_IMPORTED_MODULE_2__.context.payload.repository.html_url}!`);
+
+    // https://github.community/t/how-to-get-just-the-tag-name/16241/20
+    // github.event.release.tag_name が使えそうだけどどこにあるんだろう
+    const message = JSON.stringify(github)
+    console.log(message)
 
     // tweet
     var client = new twitter__WEBPACK_IMPORTED_MODULE_0___default.a({
@@ -39751,8 +39757,6 @@ try {
         access_token_key: Object(_actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput)("access_token_key"),
         access_token_secret: Object(_actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput)("access_token_secret")
     });
-    // refから組み上げなきゃな気がする
-    const message = _actions_github__WEBPACK_IMPORTED_MODULE_2__.context.ref
     client.post('statuses/update', {
         status: message
     }, function (error, tweet, response) {

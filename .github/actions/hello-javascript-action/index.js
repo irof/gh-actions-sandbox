@@ -2,9 +2,15 @@ import Twitter from 'twitter';
 import { getInput, setFailed } from '@actions/core';
 import { context } from '@actions/github';
 
+// ncc build index.js で作らなかったら node_modules を全部コミットしなきゃいけない
 try {
     console.log(`Hello ${context.ref}!`);
     console.log(`Hello ${context.payload.repository.html_url}!`);
+
+    // https://github.community/t/how-to-get-just-the-tag-name/16241/20
+    // github.event.release.tag_name が使えそうだけどどこにあるんだろう
+    const message = JSON.stringify(github)
+    console.log(message)
 
     // tweet
     var client = new Twitter({
@@ -14,8 +20,6 @@ try {
         access_token_key: getInput("access_token_key"),
         access_token_secret: getInput("access_token_secret")
     });
-    // refから組み上げなきゃな気がする
-    const message = context.ref
     client.post('statuses/update', {
         status: message
     }, function (error, tweet, response) {
