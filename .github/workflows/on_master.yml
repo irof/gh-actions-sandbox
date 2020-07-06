@@ -22,4 +22,10 @@ jobs:
           curl -X POST -H 'Content-type: application/json' \
             --data '{"text":"Hello, World!"}' \
             ${{ secrets.SLACK_WEBHOOK_URL }}
-
+  hello-js:
+    name: HelloJavaScriptAction
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: inoke JavaScript
+        uses: ./github/actions/hello-javascript-action

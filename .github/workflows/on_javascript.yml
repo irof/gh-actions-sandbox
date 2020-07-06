@@ -1,0 +1,15 @@
+name: javascriptの更新で動く
+
+on:
+  push:
+    branches:
+      - javascript
+
+jobs:
+  hello-js:
+    name: HelloJavaScriptAction
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: inoke JavaScript
+        uses: ./github/actions/hello-javascript-action
