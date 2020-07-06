@@ -20,3 +20,4 @@ jobs:
           access_token_key: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }}
           access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
           url: ${{ github.event.compare }}
+          tag_name: ${{ github.event.ref}}

@@ -39748,8 +39748,12 @@ try {
     // github.event.release.tag_name が使えそう
     // JavaScriptから素直にアクセスはできなさそうなので外から渡す
     // https://docs.github.com/en/developers/webhooks-and-events/webhook-events-and-payloads#release
-    console.log(JSON.stringify(github))
-    const message = Object(_actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput)("url")
+    // github.event.release.url
+    // github.event.release.tag_name
+    const tag = Object(_actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput)("tag_name")
+    const url = Object(_actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput)("url")
+
+    const message = `XXX ${tag} Released. ${url}`
     console.log(message)
 
     // tweet

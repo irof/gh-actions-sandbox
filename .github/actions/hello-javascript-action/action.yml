@@ -15,6 +15,9 @@ inputs:
   url:
     description: 'url'
     required: true
+  tag_name:
+    description: 'tag name'
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'

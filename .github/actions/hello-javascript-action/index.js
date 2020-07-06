@@ -7,15 +7,16 @@ try {
     console.log(`Hello ${context.ref}!`);
     console.log(`Hello ${context.payload.repository.html_url}!`);
 
-    console.log(JSON.stringify(github))
-
     // https://github.community/t/how-to-get-just-the-tag-name/16241/21
     // github.event.release.tag_name が使えそう
     // JavaScriptから素直にアクセスはできなさそうなので外から渡す
     // https://docs.github.com/en/developers/webhooks-and-events/webhook-events-and-payloads#release
     // github.event.release.url
     // github.event.release.tag_name
-    const message = getInput("url")
+    const tag = getInput("tag_name")
+    const url = getInput("url")
+
+    const message = `XXX ${tag} Released. ${url}`
     console.log(message)
 
     // tweet
