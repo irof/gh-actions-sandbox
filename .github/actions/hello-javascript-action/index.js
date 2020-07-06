@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const twitter = require('twitter');
+const Twitter = require('twitter');
 
 try {
     console.log(`Hello ${github}!`);
