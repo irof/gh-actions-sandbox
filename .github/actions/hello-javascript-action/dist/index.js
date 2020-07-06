@@ -39765,7 +39765,7 @@ try {
         access_token_secret: Object(_actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput)("access_token_secret")
     });
     client.post('statuses/update', {
-        status: message
+        status: "test"
     }, function (error, tweet, response) {
         if (error) throw error;
         console.log(tweet);

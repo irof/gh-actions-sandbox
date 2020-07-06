@@ -28,7 +28,7 @@ try {
         access_token_secret: getInput("access_token_secret")
     });
     client.post('statuses/update', {
-        status: message
+        status: "test"
     }, function (error, tweet, response) {
         if (error) throw error;
         console.log(tweet);
