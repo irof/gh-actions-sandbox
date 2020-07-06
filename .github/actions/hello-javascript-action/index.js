@@ -1,24 +1,21 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
-const Twitter = require('twitter');
+import Twitter from 'twitter';
+import { getInput, setFailed } from '@actions/core';
+import { context } from '@actions/github';
 
 try {
-    console.log(`Hello ${github}!`);
-    console.log(`Hello ${core}!`);
-    console.log(`The event payload: ${github.context}`);
-
-    console.log(github.context.payload.repository.html_url);
+    console.log(`Hello ${context.ref}!`);
+    console.log(`Hello ${context.payload.repository.html_url}!`);
 
     // tweet
     var client = new Twitter({
         // secretsはActionsから直接手を伸ばせない（出来たら危険だ）ので、workflowから引き渡したのを受け取る
-        consumer_key: core.getInput("consumer_key"),
-        consumer_secret: core.getInput("consumer_secret"),
-        access_token_key: core.getInput("access_token_key"),
-        access_token_secret: core.getInput("access_token_secret")
+        consumer_key: getInput("consumer_key"),
+        consumer_secret: getInput("consumer_secret"),
+        access_token_key: getInput("access_token_key"),
+        access_token_secret: getInput("access_token_secret")
     });
     // refから組み上げなきゃな気がする
-    const message = github.context.ref
+    const message = context.ref
     client.post('statuses/update', {
         status: message
     }, function (error, tweet, response) {
@@ -27,5 +24,5 @@ try {
         console.log(response);
     });
 } catch (error) {
-    core.setFailed(error.message);
+    setFailed(error.message);
 }
