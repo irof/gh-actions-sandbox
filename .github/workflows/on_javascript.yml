@@ -1,0 +1,23 @@
+name: javascriptの更新で動く
+
+on:
+  push:
+    branches:
+      - javascript
+
+jobs:
+  hello-js:
+    runs-on: ubuntu-latest
+    name: HelloJavaScriptAction
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: inoke JavaScript
+        uses: ./.github/actions/hello-javascript-action
+        with:
+          consumer_key: ${{ secrets.TWITTER_CONSUMER_KEY }}
+          consumer_secret: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+          access_token_key: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }}
+          access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          url: ${{ github.event.compare }}
+          tag_name: ${{ github.event.ref}}
