@@ -13,7 +13,7 @@ jobs:
       - name: コマンド実行
         run: |
           echo hello world.
-      - run: echo ${{ github }}
+      - run: echo ${{ github.run_id }}
   slack:
     name: Slackに通知
     runs-on: ubuntu-latest
