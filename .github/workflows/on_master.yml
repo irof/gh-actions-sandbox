@@ -13,14 +13,17 @@ jobs:
       - name: コマンド実行
         run: |
           echo hello world.
-      - run: echo ${{ github.run_id }}
+      - name: run_id
+        run: echo ${{ github.run_id }}
+      - name: run_number
+        run: echo ${{ github.run_number }}
   slack:
     name: Slackに通知
     runs-on: ubuntu-latest
     steps:
-      - name: Slack Notification
+      - name: Slack Notification（しない）
         run: |
-          curl -X POST -H 'Content-type: application/json' \
+          echo curl -X POST -H 'Content-type: application/json' \
             --data '{"text":"Hello, World!"}' \
             ${{ secrets.SLACK_WEBHOOK_URL }}
   hello-js:
