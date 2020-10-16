@@ -30,4 +30,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: inoke JavaScript
-        uses: .github/actions/hello-javascript-action
+        uses: ./.github/actions/hello-javascript-action
