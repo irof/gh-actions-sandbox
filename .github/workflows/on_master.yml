@@ -21,7 +21,7 @@ jobs:
           echo ${{ github.run_id }}
           echo ${{ github.run_number }}
           echo ${{ job.container.id }}
-          echo "https://github.com/${{ github.repository }}/runs/${{ github.run_id }}"
+          echo "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
   slack:
     name: Slackに通知
     runs-on: ubuntu-latest
