@@ -14,6 +14,8 @@ jobs:
         run: |
           echo hello world.
       - name: echo IDs
+        env:
+          URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
         run: |
           echo ${{ github.event_path }}
           echo ${{ github.repository }}
@@ -22,6 +24,7 @@ jobs:
           echo ${{ github.run_number }}
           echo ${{ job.container.id }}
           echo "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          echo $URL
   slack:
     name: Slackに通知
     runs-on: ubuntu-latest
