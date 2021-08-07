@@ -18,6 +18,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
       - run: |
           ls -al ~/.gradle/caches/modules-2
+        continue-on-error: true
       - uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
