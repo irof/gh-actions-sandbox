@@ -12,5 +12,7 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
       - run: |
-          ./gradlew build --debug
+          ./gradlew build
+          ls -al ~/.gradle/caches
+          ls -al ~/.gradle/caches/modules-2
 
