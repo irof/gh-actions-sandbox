@@ -1,0 +1,27 @@
+name: update-wiki
+
+on: workflow_dispatch
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+    - name: wikiリポジトリを取得
+      uses: actions/checkout@v2
+      with:
+        repository: "${{ github.repository }}.wiki"
+        ref: master
+        path: .wiki
+    - name: 更新
+      working-directory: .wiki
+      run: |
+        date | tee date.md
+    - name: wikiにpush
+      working-directory: .wiki
+      run: |
+        git config user.name  "${GITHUB_ACTOR}"
+        git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        git add .
+        git commit -m "update"
+        git push origin master
