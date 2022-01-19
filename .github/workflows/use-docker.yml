@@ -10,6 +10,6 @@ jobs:
           ls -al
       - name: run alpine
         uses: docker://alpine
-        run: |
-          echo hello
-          ls -al
+        with:
+          entrypoint: /bin/ls
+          args: -al
