@@ -1,7 +1,8 @@
 name: DockerHubのイメージを使う
 
 on:
-  push: main
+  push:
+    branches: main
 
 jobs:
   hello:
