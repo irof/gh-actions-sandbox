@@ -1,0 +1,15 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo hello
+          ls -al
+      - name: run alpine
+        uses: docker://alpine
+        run: |
+          echo hello
+          ls -al
