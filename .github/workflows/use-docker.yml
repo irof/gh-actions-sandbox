@@ -22,3 +22,12 @@ jobs:
         uses: docker://alpine
         with:
           entrypoint: /bin/pwd
+      - name: alpineでpwd
+        uses: docker://irof/rexdep
+        with:
+          args: --pattern "name: (.+)" -r .github
+      - name: alpineでpwd
+        working-directory: ./.github
+        uses: docker://alpine
+        with:
+          entrypoint: /bin/pwd
