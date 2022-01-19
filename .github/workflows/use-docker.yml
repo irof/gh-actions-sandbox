@@ -1,7 +1,7 @@
 name: DockerHubのイメージを使う
 
 on:
-  - workflow_dispatch
+  push: main
 
 jobs:
   hello:
@@ -16,7 +16,7 @@ jobs:
       - name: rexdep
         uses: docker://irof/rexdep
         with:
-          args: '--pattern "name: (.+)" --format dot -o graph.dot -r .github/workflows'
+          args: '--pattern "[\t- ]+uses: (.+)" --format dot -o graph.dot -r .github/workflows'
       - name: rexdep
         uses: docker://irof/rexdep
         with:
