@@ -21,7 +21,7 @@ jobs:
         uses: docker://irof/rexdep
         with:
           entrypoint: /usr/bin/dot
-          args: '-Tpng -o graph.svg graph.dot'
+          args: '-Tsvg -o graph.svg graph.dot'
       - name: push
         run: |
           git config user.name  "${GITHUB_ACTOR}"
