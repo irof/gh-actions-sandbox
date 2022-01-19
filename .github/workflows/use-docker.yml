@@ -30,11 +30,11 @@ jobs:
         uses: docker://irof/rexdep
         with:
           entrypoint: /usr/bin/dot
-          args: '-Tpng -o .github/test.png graph.dot'
+          args: '-Tpng -o graph.svg graph.dot'
       - name: push
         run: |
           git config user.name  "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git add .
+          git add graph.svg
           git commit -m "update"
           git push origin main 
