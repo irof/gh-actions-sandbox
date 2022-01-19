@@ -7,11 +7,18 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
+      - name: リポジトリ取得
+        uses: actions/checkout@v2
       - run: |
           echo hello
           ls -al
-      - name: run alpine
+          pwd
+      - name: alpineでls
         uses: docker://alpine
         with:
           entrypoint: /bin/ls
           args: -al
+      - name: alpineでpwd
+        uses: docker://alpine
+        with:
+          entrypoint: /bin/pwd
