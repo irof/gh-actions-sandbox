@@ -27,7 +27,7 @@ jobs:
         with:
           args: '--pattern "name: (.+)" -r .github'
       - name: alpineでpwd
-        working-directory: ./.github
         uses: docker://alpine
         with:
           entrypoint: /bin/pwd
+        working-directory: ./.github
