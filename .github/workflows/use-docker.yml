@@ -1,3 +1,5 @@
+name: DockerHubのイメージを使う
+
 on:
   workflow_dispatch:
 
