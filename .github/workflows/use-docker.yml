@@ -1,7 +1,7 @@
 name: DockerHubのイメージを使う
 
 on:
-  workflow_dispatch:
+  workflow_dispatch
 
 jobs:
   hello:
@@ -22,7 +22,14 @@ jobs:
         uses: docker://alpine
         with:
           entrypoint: /bin/pwd
-      - name: alpineでpwd
+      - name: rexdep
         uses: docker://irof/rexdep
         with:
-          args: '--pattern "name: (.+)" -r .github'
+          args: '--pattern "name: (.+)" -r .github/workflows --format dot |  dot -Tpng -o .github/test.png'
+    - name: push
+      run: |
+        git config user.name  "${GITHUB_ACTOR}"
+        git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        git add .
+        git commit -m "update"
+        git push origin main 
