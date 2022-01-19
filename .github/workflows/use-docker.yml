@@ -13,15 +13,6 @@ jobs:
           echo hello
           ls -al
           pwd
-      - name: alpineでls
-        uses: docker://alpine
-        with:
-          entrypoint: /bin/ls
-          args: -al
-      - name: alpineでpwd
-        uses: docker://alpine
-        with:
-          entrypoint: /bin/pwd
       - name: rexdep
         uses: docker://irof/rexdep
         with:
