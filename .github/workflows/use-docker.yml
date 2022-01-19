@@ -25,7 +25,7 @@ jobs:
       - name: rexdep
         uses: docker://irof/rexdep
         with:
-          args: '--pattern "name: (.+)" -r .github/workflows --format dot |  dot -Tpng -o .github/test.png'
+          args: '--pattern "name: (.+)" --format dot -r .github/workflows |  dot -Tpng -o .github/test.png'
       - name: push
         run: |
           git config user.name  "${GITHUB_ACTOR}"
