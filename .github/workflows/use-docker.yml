@@ -1,7 +1,6 @@
 name: DockerHubのイメージを使う
 
-on:
-  workflow_dispatch
+on: workflow_dispatch
 
 jobs:
   hello:
