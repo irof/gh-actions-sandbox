@@ -28,7 +28,7 @@ jobs:
           git config user.name  "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           git add graph.svg
-          git commit -m "update"
+          git commit -m "update" --allow-empty
           git push origin main 
 
   pandoc:
@@ -47,7 +47,8 @@ jobs:
 
       - uses: docker://pandoc/core:2.17
         with:
-          args: -f markdown -t html --self-contained --toc --toc-depth=1 --output=output/result.html ${{ steps.files_list.outputs.files }}
+          entrypoint: /bin/pwd
+          # args: -f markdown -t html --self-contained --toc --toc-depth=1 --output=output/result.html ${{ steps.files_list.outputs.files }}
           
       - uses: actions/upload-artifact@master
         with:
