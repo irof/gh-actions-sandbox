@@ -47,7 +47,7 @@ jobs:
 
       - uses: docker://pandoc/core:2.17
         with:
-          args: -f markdown -t html --self-contained --toc --toc-depth --output=output/result.html ${{ steps.files_list.outputs.files }}
+          args: -f markdown -t html --self-contained --toc --toc-depth=1 --output=output/result.html ${{ steps.files_list.outputs.files }}
           
       - uses: actions/upload-artifact@master
         with:
