@@ -1,0 +1,12 @@
+name: PullRequestで動くもの
+
+on:
+  pull_request
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: echo
+        run: echo "pull requset"
