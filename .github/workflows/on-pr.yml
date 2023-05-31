@@ -1,7 +1,9 @@
 name: PullRequestで動くもの
 
 on:
-  pull_request
+  pull_request:
+    paths:
+    - '!**/piyo/**'
 
 jobs:
   sample:
